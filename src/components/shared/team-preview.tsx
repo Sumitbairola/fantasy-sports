@@ -1,10 +1,11 @@
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
-import { Team } from '@/types';
+} from "@/components/ui/dialog";
+import { Team } from "@/types";
 
 interface TeamPreviewDialogProps {
   team: Team | null;
@@ -24,16 +25,20 @@ export function TeamPreviewDialog({
       <DialogContent className="max-h-[80vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Team Preview</DialogTitle>
+          <DialogDescription>
+            View your team composition, captain selections, and player
+            statistics
+          </DialogDescription>
         </DialogHeader>
         <div className="space-y-4">
           {/* Team Name */}
           <div className="text-center">
             <h3 className="text-lg font-bold">
-              {team.name}{' '}
+              {team.name}{" "}
               {team.contestsJoined > 0 && (
                 <span className="text-xs">
                   ({team.contestsJoined} Contest
-                  {team.contestsJoined > 1 ? 's' : ''} Joined)
+                  {team.contestsJoined > 1 ? "s" : ""} Joined)
                 </span>
               )}
             </h3>
@@ -115,25 +120,25 @@ export function TeamPreviewDialog({
             <div className="text-center">
               <p className="text-xs text-gray-500">WK</p>
               <p className="text-lg font-bold">
-                {team.players.filter((p) => p.role === 'Wicket-Keeper').length}
+                {team.players.filter((p) => p.role === "Wicket-Keeper").length}
               </p>
             </div>
             <div className="text-center">
               <p className="text-xs text-gray-500">BAT</p>
               <p className="text-lg font-bold">
-                {team.players.filter((p) => p.role === 'Batsman').length}
+                {team.players.filter((p) => p.role === "Batsman").length}
               </p>
             </div>
             <div className="text-center">
               <p className="text-xs text-gray-500">AR</p>
               <p className="text-lg font-bold">
-                {team.players.filter((p) => p.role === 'All-Rounder').length}
+                {team.players.filter((p) => p.role === "All-Rounder").length}
               </p>
             </div>
             <div className="text-center">
               <p className="text-xs text-gray-500">BOWL</p>
               <p className="text-lg font-bold">
-                {team.players.filter((p) => p.role === 'Bowler').length}
+                {team.players.filter((p) => p.role === "Bowler").length}
               </p>
             </div>
           </div>

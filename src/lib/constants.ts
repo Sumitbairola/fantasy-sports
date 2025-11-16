@@ -13,8 +13,8 @@ export const TEAM_CONSTRAINTS: TeamConstraints = {
 };
 
 export const API_ENDPOINTS = {
-  matches: 'https://leaguex.s3.ap-south-1.amazonaws.com/task/fantasy-sports/Get_All_upcoming_Matches.json',
-  players: 'https://leaguex.s3.ap-south-1.amazonaws.com/task/fantasy-sports/Get_All_Players_of_match.json',
+  matches: process.env.NEXT_PUBLIC_MATCHES_API || '',
+  players: process.env.NEXT_PUBLIC_PLAYERS_API || '',
 };
 
 export const ROLE_COLORS: Record<string, string> = {

@@ -1,15 +1,18 @@
+import axios from 'axios';
 import { API_ENDPOINTS } from './constants';
 import { Match, Player } from '@/types';
+
+const axiosInstance = axios.create({
+  timeout: 10000,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
 
 export const apiClient = {
   async getMatches(): Promise<Match[]> {
     try {
-      const response = await fetch(API_ENDPOINTS.matches);
-      if (!response.ok) {
-        throw new Error('Failed to fetch matches');
-      }
-      const data = await response.json();
-      
+      const { data } = await axiosInstance.get(API_ENDPOINTS.matches);
       return data?.matches?.cricket || [];
     } catch (error) {
       console.error('Error fetching matches:', error);
@@ -19,12 +22,7 @@ export const apiClient = {
 
   async getPlayers(matchId: string): Promise<Player[]> {
     try {
-      const response = await fetch(API_ENDPOINTS.players);
-      if (!response.ok) {
-        throw new Error('Failed to fetch players');
-      }
-      const data = await response.json();
-      
+      const { data } = await axiosInstance.get(API_ENDPOINTS.players);
       return Array.isArray(data) ? data : [];
     } catch (error) {
       console.error('Error fetching players:', error);
